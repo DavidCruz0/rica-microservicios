@@ -76,6 +76,14 @@
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+  			<groupId>org.springframework.boot</groupId>
+  			<artifactId>spring-boot-starter-grpc-server</artifactId>
+		</dependency>
+		<dependency>
+  			<groupId>io.grpc</groupId>
+  			<artifactId>grpc-services</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
