@@ -10,6 +10,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.rica.publicaciones_service.publicaciones.ServicioNoDisponibleException;
+
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -46,4 +48,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(estado).body(cuerpo);
     }
 
+    @ExceptionHandler(ServicioNoDisponibleException.class)
+        public ResponseEntity<Map<String, Object>> manejarServicioNoDisponible(ServicioNoDisponibleException ex) {
+        return construirRespuesta(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage());
+    }
 }
