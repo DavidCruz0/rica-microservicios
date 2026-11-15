@@ -72,11 +72,18 @@ public InvestigadorService(RepositorioInvestigadores repositorioInvestigadores,
             Map.of("correoInstitucional", correo));
     }
 
-    @Override
+     @Override
     @Transactional
     public void confirmarEliminacion(String correoInstitucional) {
         repositorioInvestigadores.buscarPorCorreo(correoInstitucional)
-            .filter(Investigador::estaEnEliminacion)
-            .ifPresent(repositorioInvestigadores::eliminar);
+                .filter(Investigador::estaEnEliminacion)
+                .ifPresent(investigador -> {
+                    repositorioInvestigadores.eliminar(investigador);
+                    // Los consumidores (p. ej. consultas-service) se enteran de que ya no existe.
+                    publicadorEventos.publicar(
+                            "investigadores.eliminados",
+                            correoInstitucional,
+                            Map.of("correoInstitucional", correoInstitucional));
+                });
     }
 }

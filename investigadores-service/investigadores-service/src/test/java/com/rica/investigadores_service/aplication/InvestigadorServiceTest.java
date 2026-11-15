@@ -9,6 +9,7 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,4 +47,17 @@ public class InvestigadorServiceTest {
         verify(repositorio, never()).guardar(any()); verifyNoInteractions(eventos);
     }
 
+    @Test void confirmarEliminacionBorraAlInvestigadorYPublicaElEventoEliminado() {
+        Investigador enEliminacion = new Investigador(1L, "Ana Torres", new CorreoInstitucional("ana.torres@uptc.edu.co"), "GIT-UPTC");
+        enEliminacion.marcarEnEliminacion();
+        when(repositorio.buscarPorCorreo("ana.torres@uptc.edu.co")).thenReturn(Optional.of(enEliminacion));
+
+        servicio.confirmarEliminacion("ana.torres@uptc.edu.co");
+
+        verify(repositorio).eliminar(enEliminacion);
+        verify(eventos).publicar(
+                "investigadores.eliminados",
+                "ana.torres@uptc.edu.co",
+                java.util.Map.of("correoInstitucional", "ana.torres@uptc.edu.co"));
+    }
 }
