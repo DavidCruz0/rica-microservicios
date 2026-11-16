@@ -1,21 +1,15 @@
-package com.rica.publicaciones_service.publicaciones;
+package com.rica.publicaciones_service.publicaciones.infraestructura.entrada.web;
 
 import java.util.Map;
 
 public class PublicacionResponse {
-
-    private String id;
     private String investigadorCorreo;
     private String titulo;
     private String tipo;
     private Integer anio;
     private Map<String, String> detalles;
 
-    public PublicacionResponse() {
-    }
-
-    public PublicacionResponse(String id, String investigadorCorreo, String titulo, String tipo, Integer anio, Map<String, String> detalles) {
-        this.id = id;
+    public PublicacionResponse(String investigadorCorreo, String titulo, String tipo, Integer anio, Map<String, String> detalles) {
         this.investigadorCorreo = investigadorCorreo;
         this.titulo = titulo;
         this.tipo = tipo;
@@ -23,13 +17,7 @@ public class PublicacionResponse {
         this.detalles = detalles;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    public PublicacionResponse() {}
 
     public String getInvestigadorCorreo() {
         return investigadorCorreo;
@@ -70,5 +58,4 @@ public class PublicacionResponse {
     public void setDetalles(Map<String, String> detalles) {
         this.detalles = detalles;
     }
-
 }

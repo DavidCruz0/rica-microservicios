@@ -1,19 +1,17 @@
 package com.rica.publicaciones_service.publicaciones;
 
-import org.springframework.stereotype.Component;
-
 import com.rica.publicacionesservice.grpc.InvestigadorGrpcGrpc.InvestigadorGrpcBlockingStub;
 import com.rica.publicacionesservice.grpc.InvestigadorRequest;
 import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;  
+import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.grpc.StatusRuntimeException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Component
 public class VerificadorInvestigadorGrpc implements VerificadorInvestigador {

@@ -2,6 +2,9 @@ package com.rica.publicaciones_service.publicaciones;
 
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
+
+import com.rica.publicaciones_service.publicaciones.dominio.Publicacion;
+
 import tools.jackson.databind.ObjectMapper;
 
 import java.util.Map;
