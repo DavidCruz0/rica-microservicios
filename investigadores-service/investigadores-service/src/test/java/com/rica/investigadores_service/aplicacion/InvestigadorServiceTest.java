@@ -1,4 +1,4 @@
-package com.rica.investigadores_service.aplication;
+package com.rica.investigadores_service.aplicacion;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

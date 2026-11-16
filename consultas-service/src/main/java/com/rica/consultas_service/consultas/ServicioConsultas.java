@@ -1,8 +1,8 @@
 package com.rica.consultas_service.consultas;
-
-import com.rica.consultas_service.compartido.RecursoNoEncontradoException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import com.rica.consultas_service.compartido.RecursoNoEncontradoException;
 
 import java.util.List;
 

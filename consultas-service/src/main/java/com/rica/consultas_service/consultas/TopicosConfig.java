@@ -7,7 +7,8 @@ import org.springframework.kafka.config.TopicBuilder;
 
 /**
  * El lado de lectura declara los tópicos que consume, para poder arrancar
- * aunque nadie haya publicado todavía en ellos. Declarar un tópico que ya existe no hace nada.
+ * aunque nadie haya publicado todavía en ellos. Declarar un tópico que ya
+ * existe no hace nada.
  */
 @Configuration
 public class TopicosConfig {

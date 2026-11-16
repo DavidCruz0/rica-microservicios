@@ -1,10 +1,13 @@
-package com.rica.consultas_service.consultas;
+package com.rica.consultas_service.consultas.infraestructura.entrada.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.rica.consultas_service.consultas.FichaResponse;
+import com.rica.consultas_service.consultas.ServicioConsultas;
 
 import java.util.List;
 

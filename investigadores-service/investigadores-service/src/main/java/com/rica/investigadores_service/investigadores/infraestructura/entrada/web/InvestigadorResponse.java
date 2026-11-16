@@ -1,18 +1,15 @@
 package com.rica.investigadores_service.investigadores.infraestructura.entrada.web;
 
 public class InvestigadorResponse {
-
+    
     private Long id;
     private String nombreCompleto;
-    private String grupoInvestigacion;
+    private String correoInstitucional;
 
-    public InvestigadorResponse() {
-    }
-
-    public InvestigadorResponse(Long id, String nombreCompleto, String grupoInvestigacion) {
+    public InvestigadorResponse(Long id, String nombreCompleto, String correoInstitucional) {
         this.id = id;
         this.nombreCompleto = nombreCompleto;
-        this.grupoInvestigacion = grupoInvestigacion;
+        this.correoInstitucional = correoInstitucional;
     }
 
     public Long getId() {
@@ -31,12 +28,11 @@ public class InvestigadorResponse {
         this.nombreCompleto = nombreCompleto;
     }
 
-    public String getGrupoInvestigacion() {
-        return grupoInvestigacion;
+    public String getCorreoInstitucional() {
+        return correoInstitucional;
     }
 
-    public void setGrupoInvestigacion(String grupoInvestigacion) {
-        this.grupoInvestigacion = grupoInvestigacion;
+    public void setCorreoInstitucional(String correoInstitucional) {
+        this.correoInstitucional = correoInstitucional;
     }
-
 }

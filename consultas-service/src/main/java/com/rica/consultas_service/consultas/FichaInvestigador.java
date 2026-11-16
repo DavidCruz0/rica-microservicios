@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Modelo de LECTURA: una ficha por investigador con todo lo que la pantalla necesita
  * (datos del investigador + sus publicaciones) en un solo documento. No es la fuente de
