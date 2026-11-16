@@ -1,18 +1,29 @@
 package com.rica.investigadores_service.investigadores.aplicacion;
 
+import com.rica.investigadores_service.investigadores.dominio.Investigador;
+import com.rica.investigadores_service.investigadores.dominio.CorreoInstitucional;
+import com.rica.investigadores_service.investigadores.dominio.CorreoDuplicadoException;
+import com.rica.investigadores_service.investigadores.dominio.InvestigadorRegistrado;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
-import com.rica.investigadores_service.investigadores.dominio.CorreoDuplicadoException;
-import com.rica.investigadores_service.investigadores.dominio.CorreoInstitucional;
-import com.rica.investigadores_service.investigadores.dominio.Investigador;
+import java.time.Instant;
 
 @Component
 public class InvestigadorFactory {
 
     private final RepositorioInvestigadores repositorioInvestigadores;
+    private final ApplicationEventPublisher eventPublisher;
+
+    @org.springframework.beans.factory.annotation.Autowired
+    public InvestigadorFactory(RepositorioInvestigadores repositorioInvestigadores,
+                               ApplicationEventPublisher eventPublisher) {
+        this.repositorioInvestigadores = repositorioInvestigadores;
+        this.eventPublisher = eventPublisher;
+    }
 
     public InvestigadorFactory(RepositorioInvestigadores repositorioInvestigadores) {
-        this.repositorioInvestigadores = repositorioInvestigadores;
+        this(repositorioInvestigadores, event -> {});
     }
 
     public Investigador crear(String nombreCompleto, String correoInstitucional, String grupoInvestigacion) {
@@ -23,6 +34,9 @@ public class InvestigadorFactory {
                     "Ya existe un investigador registrado con el correo " + correo.valor());
         }
 
-        return new Investigador(null, nombreCompleto, correo, grupoInvestigacion);
+        Investigador investigador = new Investigador(null, nombreCompleto, correo, grupoInvestigacion);
+        eventPublisher.publishEvent(new InvestigadorRegistrado(correo.valor(), Instant.now()));
+
+        return investigador;
     }
 }

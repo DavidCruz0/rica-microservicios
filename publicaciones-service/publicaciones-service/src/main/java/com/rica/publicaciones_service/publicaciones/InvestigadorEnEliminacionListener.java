@@ -5,6 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
+
+import com.rica.publicaciones_service.publicaciones.dominio.Publicacion;
+import com.rica.publicaciones_service.publicaciones.infraestructura.salida.persistencia.PublicacionRepository;
+
 import tools.jackson.databind.ObjectMapper;
 
 import java.util.List;

@@ -1,10 +1,16 @@
-package com.rica.publicaciones_service.publicaciones;
-
-import java.util.List;
+package com.rica.publicaciones_service.publicaciones.aplicacion;
 
 import org.springframework.stereotype.Service;
 
+import com.rica.publicaciones_service.compartido.LimiteAnualExcedidoException;
 import com.rica.publicaciones_service.compartido.RecursoNoEncontradoException;
+import com.rica.publicaciones_service.publicaciones.PublicadorEventosPublicaciones;
+import com.rica.publicaciones_service.publicaciones.VerificadorInvestigador;
+import com.rica.publicaciones_service.publicaciones.dominio.LimitePublicacionesAnualesService;
+import com.rica.publicaciones_service.publicaciones.dominio.Publicacion;
+import com.rica.publicaciones_service.publicaciones.infraestructura.salida.persistencia.PublicacionRepository;
+
+import java.util.List;
 
 @Service
 public class PublicacionService {
@@ -15,9 +21,8 @@ public class PublicacionService {
     private final PublicadorEventosPublicaciones publicadorEventos;
 
     public PublicacionService(PublicacionRepository publicacionRepository,
-                               VerificadorInvestigador verificadorInvestigador,
-                               LimitePublicacionesAnualesService limitePublicacionesAnualesService,
-                               PublicadorEventosPublicaciones publicadorEventos) {
+            VerificadorInvestigador verificadorInvestigador,
+            LimitePublicacionesAnualesService limitePublicacionesAnualesService, PublicadorEventosPublicaciones publicadorEventos) {
         this.publicacionRepository = publicacionRepository;
         this.verificadorInvestigador = verificadorInvestigador;
         this.limitePublicacionesAnualesService = limitePublicacionesAnualesService;

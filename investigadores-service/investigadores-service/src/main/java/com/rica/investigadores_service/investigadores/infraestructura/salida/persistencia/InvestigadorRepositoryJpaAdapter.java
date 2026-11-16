@@ -1,18 +1,16 @@
 package com.rica.investigadores_service.investigadores.infraestructura.salida.persistencia;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.stereotype.Component;
-
 import com.rica.investigadores_service.investigadores.aplicacion.RepositorioInvestigadores;
 import com.rica.investigadores_service.investigadores.dominio.Investigador;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Optional;
 
 @Component
 public class InvestigadorRepositoryJpaAdapter implements RepositorioInvestigadores {
 
     private final InvestigadorRepository investigadorRepository;
-
 
     public InvestigadorRepositoryJpaAdapter(InvestigadorRepository investigadorRepository) {
         this.investigadorRepository = investigadorRepository;

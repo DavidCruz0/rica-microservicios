@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.rica.publicaciones_service.publicaciones.ServicioNoDisponibleException;
 
-
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -22,15 +21,15 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(LimiteAnualExcedidoException.class)
-    public ResponseEntity<Map<String, Object>> manejarLimiteAnualExcedido(LimiteAnualExcedidoException ex) {
+    public ResponseEntity<Map<String, Object>> manejarLimiteAnual(LimiteAnualExcedidoException ex) {
         return construirRespuesta(HttpStatus.CONFLICT, ex.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> manejarValidacion(MethodArgumentNotValidException ex) {
         Map<String, String> errores = new LinkedHashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(error ->
-                errores.put(error.getField(), error.getDefaultMessage()));
+        ex.getBindingResult().getFieldErrors()
+                .forEach(error -> errores.put(error.getField(), error.getDefaultMessage()));
 
         Map<String, Object> cuerpo = new LinkedHashMap<>();
         cuerpo.put("timestamp", LocalDateTime.now());
@@ -49,7 +48,8 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ServicioNoDisponibleException.class)
-        public ResponseEntity<Map<String, Object>> manejarServicioNoDisponible(ServicioNoDisponibleException ex) {
+    public ResponseEntity<Map<String, Object>> manejarServicioNoDisponible(ServicioNoDisponibleException ex) {
         return construirRespuesta(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage());
     }
+
 }

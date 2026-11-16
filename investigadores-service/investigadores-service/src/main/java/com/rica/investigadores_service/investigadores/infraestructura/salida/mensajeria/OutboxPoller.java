@@ -1,14 +1,14 @@
 package com.rica.investigadores_service.investigadores.infraestructura.salida.mensajeria;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @Component
 public class OutboxPoller {
@@ -35,7 +35,7 @@ public class OutboxPoller {
                 log.info("Evento {} publicado en {}", evento.getId(), evento.getTopico());
             } catch (Exception e) {
                 log.warn("No se pudo publicar el evento {} (se reintentará): {}", evento.getId(), e.getMessage());
-                return; // conserva el orden: no seguimos con los siguientes
+                return; 
             }
         }
     }

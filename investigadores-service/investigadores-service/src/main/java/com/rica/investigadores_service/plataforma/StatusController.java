@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class StatusController {
+
     @GetMapping("/api/status")
-    public Map<String, String> status(){
+    public Map<String, String> status() {
         return Map.of(
-            "proyecto","RICA-MicroServicios",
+            "proyecto", "RICA",
             "estado", "operativo"
         );
     }
+
 }

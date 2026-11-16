@@ -53,4 +53,5 @@ public class OutboxEvent {
     public void marcarPublicado() {
         this.publicado = true;
     }
+    
 }

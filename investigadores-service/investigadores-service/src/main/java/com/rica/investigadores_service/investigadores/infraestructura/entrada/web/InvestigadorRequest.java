@@ -1,10 +1,10 @@
 package com.rica.investigadores_service.investigadores.infraestructura.entrada.web;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Email;
 
 public class InvestigadorRequest {
-
+    
     @NotBlank(message = "El nombre completo es obligatorio")
     private String nombreCompleto;
 

@@ -1,4 +1,4 @@
-package com.rica.consultas_service.plataforma;
+package com.rica.consultas_service.consultas.infraestructura.entrada.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

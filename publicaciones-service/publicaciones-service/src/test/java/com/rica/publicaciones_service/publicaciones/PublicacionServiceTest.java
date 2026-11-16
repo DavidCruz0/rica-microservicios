@@ -1,4 +1,4 @@
-package com.rica.publicaciones_service;
+package com.rica.publicaciones_service.publicaciones;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -6,12 +6,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.rica.publicaciones_service.publicaciones.LimitePublicacionesAnualesService;
-import com.rica.publicaciones_service.publicaciones.Publicacion;
-import com.rica.publicaciones_service.publicaciones.PublicacionRepository;
-import com.rica.publicaciones_service.publicaciones.PublicacionService;
-import com.rica.publicaciones_service.publicaciones.PublicadorEventosPublicaciones;
-import com.rica.publicaciones_service.publicaciones.VerificadorInvestigador;
+import com.rica.publicaciones_service.publicaciones.aplicacion.PublicacionService;
+import com.rica.publicaciones_service.publicaciones.dominio.LimitePublicacionesAnualesService;
+import com.rica.publicaciones_service.publicaciones.dominio.Publicacion;
+import com.rica.publicaciones_service.publicaciones.infraestructura.salida.persistencia.PublicacionRepository;
 
 import java.util.Map;
 
